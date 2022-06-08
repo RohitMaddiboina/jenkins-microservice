@@ -30,4 +30,15 @@ pipeline{
 			}
 		}
 	}
+	post{
+		always {
+			echo "I run always"
+		}
+		success{
+			echo "I run build success"
+		}
+		failure{
+			echo "I run build failure"
+		}
+	}
 }
