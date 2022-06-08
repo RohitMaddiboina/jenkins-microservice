@@ -8,7 +8,7 @@
 // }
 
 //Declerative pipeline
-pipline{
+pipeline{
 	agent any
 	stages{
 		stage('Build') {
