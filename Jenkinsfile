@@ -9,11 +9,20 @@
 
 //Declerative pipeline
 pipeline{
-	agent any
+	// agent any 
+	//agent is where we run the build for eg: if we want to run in docker
+	// agent {
+    //     docker { image 'node:16.13.1-alpine' }
+    // }
 	stages{
 		stage('Build') {
 			steps{
 				echo "Build"
+				echo "$PATH"
+				echo "BUILD_NUMBER - $env.BUILD_NUMBER"
+				echo "JOB_NAME - $env.JOB_NAME"
+				echo "BUILD_TAG - $env.BUILD_TAG"
+				echo "BUILD_URL - $env.BUILD_URL"
 			}
 			
 		}
@@ -30,7 +39,7 @@ pipeline{
 			}
 		}
 	}
-	
+
 	post{
 		always {
 			echo "I run always"
@@ -41,5 +50,7 @@ pipeline{
 		failure{
 			echo "I run build failure"
 		}
+		//unstable
+		//changed
 	}
 }
