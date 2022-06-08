@@ -9,7 +9,7 @@
 
 //Declerative pipeline
 pipeline{
-	// agent any 
+	agent any 
 	//agent is where we run the build for eg: if we want to run in docker
 	// agent {
     //     docker { image 'node:16.13.1-alpine' }
