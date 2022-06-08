@@ -6,17 +6,28 @@
 // 		echo "Test"
 // 	}
 // }
+
+//Declerative pipeline
 pipline{
-	agent: any
+	agent any
 	stages{
 		stage('Build') {
-			echo "Build"
+			steps{
+				echo "Build"
+			}
+			
 		}
 		stage('Test'){
+			steps{
+
 			echo "Test"
+			}
 		}
 		stage('Integr{ation Test'){
+			steps{
+
 			echo "Integration Test"
+			}
 		}
 	}
 }
