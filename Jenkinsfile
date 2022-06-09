@@ -67,14 +67,16 @@ pipeline{
 		}
 		stage('Push Image to Docker'){
 			steps{
-				sh "docker login -u rohitteja19@gmail.com -p Pu-.HmSRuhpZ8Mv"
+				// sh "docker login"
 				
-				// script{
-					// docker.withRegistry('','DockerCredentials')
-					// dockerImage.push();
-					// dockerImage.push("latest");
+				script{
+					docker.withRegistry('','DockerCredentials'){
+
+					dockerImage.push();
+					dockerImage.push("latest");
+					}
 					
-				// }
+				}
 			}
 		}
 	}
