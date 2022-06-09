@@ -59,26 +59,26 @@ pipeline{
 		stage("build docker image"){
 			steps{
 				//declerative approach
-				sh "docker build -t rohitmaddiboina/jenkins-microservice:$env.BUILD_TAG ."
-				// script{
-				// 	dockerImage = docker.build("rohitmaddiboina/jenkins-microservice:${env.BUILD_TAG}")
-				// }
-			}
-		}
-		stage('Push Image to Docker'){
-			steps{
-				// sh "docker login"
-				
+				// sh "docker build -t rohitmaddiboina/jenkins-microservice:$env.BUILD_TAG ."
 				script{
-					docker.withRegistry('','DockerCredentials'){
-
-					dockerImage.push();
-					dockerImage.push("latest");
-					}
-					
+					dockerImage = docker.build("rohitmaddiboina/jenkins-microservice:${env.BUILD_TAG}")
 				}
 			}
 		}
+		// stage('Push Image to Docker'){
+		// 	steps{
+		// 		// sh "docker login"
+				
+		// 		script{
+		// 			docker.withRegistry('','DockerCredentials'){
+
+		// 			dockerImage.push();
+		// 			dockerImage.push("latest");
+		// 			}
+					
+		// 		}
+		// 	}
+		// }
 	}
 
 	post{
