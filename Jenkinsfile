@@ -23,7 +23,7 @@ pipeline{
 		stage('Build') {
 			steps{
 				echo "Build"
-				// sh "mvn --version"
+				sh "mvn --version"
 				// sh "docker version"
 				echo "PATH - $PATH"
 				echo "BUILD_NUMBER - $env.BUILD_NUMBER"
