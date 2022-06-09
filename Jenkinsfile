@@ -39,18 +39,18 @@ pipeline{
 				sh 'mvn clean compile'
 			}
 		}
-		stage('Test'){
-			steps{
-				sh 'mvn test'
-			}
-		}
-		stage('Integration Test'){
-			steps{
+		// stage('Test'){
+		// 	steps{
+		// 		sh 'mvn test'
+		// 	}
+		// }
+		// stage('Integration Test'){
+		// 	steps{
 
-			echo "Integration Test"
-			sh 'mvn failsafe:integration-test failsafe:verify'
-			}
-		}
+		// 	echo "Integration Test"
+		// 	sh 'mvn failsafe:integration-test failsafe:verify'
+		// 	}
+		// }
 		stage('Package'){
 			steps{
 				sh 'mvn package -DskipTests'
@@ -59,18 +59,18 @@ pipeline{
 		stage("build docker image"){
 			steps{
 				//declerative approach
-				// sh "docker build -t rohitmaddiboina/jenkins-microservice:$env.BUILD_TAG ."
-				script{
-					dockerImage = docker.build("rohitmaddiboina/jenkins-microservice:${env.BUILD_TAG}")
-				}
+				sh "docker build -t rohitmaddiboina/jenkins-microservice:$env.BUILD_TAG ."
+				// script{
+				// 	dockerImage = docker.build("rohitmaddiboina/jenkins-microservice:${env.BUILD_TAG}")
+				// }
 			}
 		}
 		stage('Push Image to Docker'){
 			steps{
 				script{
 					docker.withRegistry('','DockerCredentials')
-					dockerImage.push();
-					dockerImage.push("latest");
+					// dockerImage.push();
+					// dockerImage.push("latest");
 					
 				}
 			}
