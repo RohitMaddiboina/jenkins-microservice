@@ -61,7 +61,7 @@ pipeline{
 				//declerative approach
 				// "docker build -t rohitmaddiboina/jenkins-microservice:$env.BUILD_TAG"
 				script{
-					dockerImage = docker.build("rohitmaddiboina/jenkins-microservice:$env.BUILD_TAG")
+					dockerImage = docker.build("rohitmaddiboina/jenkins-microservice:${env.BUILD_TAG}")
 				}
 			}
 		}
