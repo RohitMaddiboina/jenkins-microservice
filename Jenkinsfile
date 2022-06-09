@@ -14,11 +14,18 @@ pipeline{
 	// agent {
     //     docker { image 'node:16.13.1-alpine' }
     // }
+	environment{
+		dockerHome = tool 'myDocker'
+		mavenHome = tool 'myMaven'
+		PATH = "$dockerHome/bin:$mavenHome/bin:$PATH"
+	}
 	stages{
 		stage('Build') {
 			steps{
 				echo "Build"
-				echo "$PATH"
+				sh "mvn --version"
+				sh "docker version"
+				echo "PATH - $PATH"
 				echo "BUILD_NUMBER - $env.BUILD_NUMBER"
 				echo "JOB_NAME - $env.JOB_NAME"
 				echo "BUILD_TAG - $env.BUILD_TAG"
@@ -28,11 +35,10 @@ pipeline{
 		}
 		stage('Test'){
 			steps{
-
-			echo "Test"
+				echo "Test"
 			}
 		}
-		stage('Integr{ation Test'){
+		stage('Integration Test'){
 			steps{
 
 			echo "Integration Test"
