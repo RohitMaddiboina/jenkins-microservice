@@ -35,6 +35,7 @@ pipeline{
 		}
 		stage('Compile'){
 			steps{
+			
 				sh 'mvn clean compile'
 			}
 		}
@@ -47,6 +48,7 @@ pipeline{
 			steps{
 
 			echo "Integration Test"
+			sh 'mvn failsafe:integration-test failsafe:verify'
 			}
 		}
 	}
