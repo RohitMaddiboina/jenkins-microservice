@@ -65,20 +65,20 @@ pipeline{
 				}
 			}
 		}
-		// stage('Push Image to Docker'){
-		// 	steps{
-		// 		// sh "docker login"
+		stage('Push Image to Docker'){
+			steps{
+				// sh "docker login"
 				
-		// 		script{
-		// 			docker.withRegistry('','DockerCredentials'){
+				script{
+					docker.withRegistry('','DockerCredentials'){
 
-		// 			dockerImage.push();
-		// 			dockerImage.push("latest");
-		// 			}
+					dockerImage.push();
+					dockerImage.push("latest");
+					}
 					
-		// 		}
-		// 	}
-		// }
+				}
+			}
+		}
 	}
 
 	post{
